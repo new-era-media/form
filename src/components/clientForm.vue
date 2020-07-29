@@ -11,21 +11,21 @@
         <!-- Атрибуты формы: -->
         <h2>Личные данные:</h2>
         <div class="form__label">
-          <input type="text" placeholder="Фамилия*" v-model="surname" v-type />
+          <input type="text" placeholder="Фамилия*" v-model="surname" v-type="'string'" />
 
           <p
             :class="{form__checkOff: true, form__checkOn: ($v.surname.$dirty & !$v.surname.required)}"
           >Поле обязательно для заполнения</p>
         </div>
         <div class="form__label">
-          <input type="text" placeholder="Имя*" v-model="name" v-type />
+          <input type="text" placeholder="Имя*" v-model="name" v-type="'string'" />
 
           <p
             :class="{form__checkOff: true, form__checkOn: ($v.name.$dirty & !$v.name.required)}"
           >Поле обязательно для заполнения</p>
         </div>
         <div class="form__label">
-          <input type="text" placeholder="Отчество" v-type v-model="patronymic" />
+          <input type="text" placeholder="Отчество" v-type="'string'" v-model="patronymic" />
         </div>
         <div class="form__label">
           <input type="date" placeholder="Дата рождения*" v-model="date" />
@@ -99,7 +99,7 @@
           </div>
 
           <div class="form__label">
-            <input type="text" v-type placeholder="Город*" v-model="city" />
+            <input type="text" v-type="'string'" placeholder="Город*" v-model="city" />
 
             <p
               :class="{form__checkOff: true, form__checkOn: ($v.city.$dirty & !$v.city.required)}"
