@@ -87,23 +87,26 @@
         <!-- Адрес: -->
         <h2>Адрес:</h2>
         <div class="adress">
-          <div v-for="(item,i) in test" :key="i+2">
-            <div class="form__label">
-              <input
-                type="text"
-                :placeholder="item.placeholder"
-                v-type="item.type"
-                v-model="item.index"
-              />
-            </div>
+          <div class="form__label">
+            <input type="text" placeholder="Индекс" v-type="'number'" v-model="index" />
           </div>
-
+          <div class="form__label">
+            <input type="text" placeholder="Страна" v-type="'string'" v-model="country" />
+          </div>
+          <div class="form__label">
+            <input type="text" placeholder="Область" v-type="'string'" v-model="area" />
+          </div>
           <div class="form__label">
             <input type="text" v-type="'string'" placeholder="Город*" v-model="city" />
-
             <p
               :class="{form__checkOff: true, form__checkOn: ($v.city.$dirty & !$v.city.required)}"
             >Поле обязательно для заполнения</p>
+          </div>
+          <div class="form__label">
+            <input type="text" placeholder="Улица" v-type="'string'" v-model="street" />
+          </div>
+          <div class="form__label">
+            <input type="text" placeholder="Дом" v-type="'number'" v-model="home" />
           </div>
         </div>
 
@@ -129,15 +132,19 @@
             >Поле обязательно для заполнения</p>
           </div>
 
-          <div v-for="item in documentArr" :key="item.model">
-            <div class="form__label">
-              <input
-                type="text"
-                :placeholder="item.placeholder"
-                v-type="item.type"
-                v-model="item.index"
-              />
-            </div>
+          <div class="form__label">
+            <input type="text" placeholder="Серия" v-type="'number'" v-model="document_series" />
+          </div>
+          <div class="form__label">
+            <input type="text" placeholder="Номер" v-type="'number'" v-model="document_number" />
+          </div>
+          <div class="form__label">
+            <input
+              type="text"
+              placeholder="Кем выдан?"
+              v-type="'string'"
+              v-model="document_organization"
+            />
           </div>
         </div>
         <button type="submit">ОТПРАВИТЬ</button>
@@ -172,50 +179,6 @@ export default {
       document_number: "",
       document_organization: "",
       document_date: "",
-      test: [
-        {
-          model: this.index,
-          placeholder: "Индекс",
-          type: "number",
-        },
-        {
-          model: this.country,
-          placeholder: "Страна",
-          type: "string",
-        },
-        {
-          model: this.area,
-          placeholder: "Область",
-          type: "string",
-        },
-        {
-          model: this.street,
-          placeholder: "Улица",
-          type: "string",
-        },
-        {
-          model: this.home,
-          placeholder: "Дом",
-          type: "number",
-        },
-      ],
-      documentArr: [
-        {
-          model: this.document_series,
-          placeholder: "Серия",
-          type: "number",
-        },
-        {
-          model: this.document_number,
-          placeholder: "Номер",
-          type: "number",
-        },
-        {
-          model: this.document_organization,
-          placeholder: "Кем выдан",
-          type: "string",
-        },
-      ],
     };
   },
   validations: {
@@ -251,12 +214,36 @@ export default {
         return;
       }
       this.notificationOpen();
+      this.clear();
+      console.log(this.document_organization = '');
     },
     notificationOpen() {
       this.notification = true;
       setTimeout(() => {
         this.notification = false;
       }, 3000);
+    },
+    clear() {
+      this.name = "";
+      this.surname = "";
+      this.patronymic = "";
+      this.date = "";
+      this.phone = "";
+      this.male = "";
+      this.group = [];
+      this.doc = "";
+      this.sms = false;
+      this.index = "";
+      this.country = "";
+      this.area = "";
+      this.city = "";
+      this.street = "";
+      this.home = "";
+      this.document = "";
+      this.document_series = "";
+      this.document_number = "";
+      this.document_organization = "";
+      this.document_date = "";
     },
   },
 };
