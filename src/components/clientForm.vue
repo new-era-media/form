@@ -241,7 +241,7 @@ export default {
       required,
     },
     phone: {
-      minLength: minLength(16),
+      minLength: minLength(11),
     },
   },
   methods: {
